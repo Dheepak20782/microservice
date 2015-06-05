@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.test.controller.SpringBootControllerTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.411 sec - in com.test.controller.SpringBootControllerTest
