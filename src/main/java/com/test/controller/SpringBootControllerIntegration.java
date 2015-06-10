@@ -22,10 +22,10 @@ import com.test.config.Application;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-@IntegrationTest({"server.port=8090"})
+@IntegrationTest({"server.port=8070"})
 public class SpringBootControllerIntegration {
 
-    @Value("${server.port=8090}")
+    @Value("${server.port}")
     private int port;
 
 	private URL base;
