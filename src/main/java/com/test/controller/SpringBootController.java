@@ -23,13 +23,17 @@ public class SpringBootController {
     @RequestMapping("/")
     public String index() {
     	
+    	
     	//List<UserEntity> entities= cassandraRepository.findAll();
-   /* 	Users user = new Users("Kumar","Dheepak",32,"Dheepak.kumar@gmail.com","FL");
+    	if(operations != null){
+
+   	    Users user = new Users("Kumar","Dheepak",32,"Dheepak.kumar@gmail.com","FL");
     	operations.insert(user);
 
     	List<Users> users = operations.select("select * from users", Users.class);
     	
-    	System.out.println("entity"+users);*/
+    	System.out.println("entity"+users);
+    	}
         return "Welcome to Spring Boot!";
     }
 
