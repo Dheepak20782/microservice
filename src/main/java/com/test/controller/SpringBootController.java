@@ -32,7 +32,7 @@ public class SpringBootController {
 
     	List<Users> users = operations.select("select * from users", Users.class);
     	
-    	System.out.println("entity"+users);
+    	System.out.println("entities"+users);
     	}
         return "Welcome to Spring Boot!";
     }
