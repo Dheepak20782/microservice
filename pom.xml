@@ -158,8 +158,8 @@
             <version>0.12.0</version>
             <configuration>
                 <serverId>docker-hub</serverId>
-               <dockerHost>https://127.0.0.1:2375</dockerHost>
-                <certPath>C:/Users/147170/.boot2docker/certs/boot2docker-vm</certPath> 
+               <dockerHost>http://127.0.0.1:2375</dockerHost>
+                <certPath>src/main/docker/dockerCert</certPath> 
                  
               	<images>
              	<image>
