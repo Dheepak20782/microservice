@@ -20,7 +20,7 @@ public class CassandraConfig extends AbstractCassandraConfiguration{
 
 
     private static final String KEYSPACE_NAME = "demo";
-    private static final String CONTACT_POINTS = "127.0.0.1";
+    private static final String CONTACT_POINTS = "casdb";
     private static final int PORT = 9042;
     private static final int MAX_POOL_CONNECTION = 50;
 

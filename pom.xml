@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.test</groupId>
   <artifactId>microservice</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <packaging>war</packaging>
   
   <parent>
@@ -19,14 +19,14 @@
 		 <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
+           <!--   <scope>provided</scope>-->
         </dependency>
 			
 		<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
             <scope>provided</scope>
-        </dependency>	
+        </dependency>	 
 		<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -50,8 +50,13 @@
 		<groupId>org.springframework.data</groupId>
 		<artifactId>spring-data-cassandra</artifactId>
 	</dependency>
-        
-        
+    
+     
+      <!--   <dependency>
+  <groupId>com.spotify</groupId>
+  <artifactId>docker-client</artifactId>
+  <version>2.7.7</version>
+</dependency> -->
     <!--    
         <dependency>
 	<groupId>junit</groupId>
@@ -69,18 +74,7 @@
   <build>
   <pluginManagement>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>1.2.3.RELEASE</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            
             
             <plugin>
             <groupId>org.codehaus.mojo</groupId>
@@ -157,6 +151,98 @@
                 </dependency>
             </dependencies>
         </plugin>
+              <plugin>
+           <!--  <groupId>com.spotify</groupId> -->
+           <groupId>org.jolokia</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <version>0.12.0</version>
+            <configuration>
+                <serverId>docker-hub</serverId>
+               <dockerHost>https://127.0.0.1:2375</dockerHost>
+                <certPath>C:/Users/147170/.boot2docker/certs/boot2docker-vm</certPath> 
+                 
+              	<images>
+             	<image>
+             	<name>dheepak20782/${project.artifactId}</name>
+             	<registry>136.151.193.13:5000</registry>
+             	 <build>
+				    <from>java:7</from>
+				    <maintainer>dheepak.kumar@gmail.com</maintainer>
+		
+					<entryPoint>
+					    <exec>
+					      <arg>java</arg>
+					      <arg>-jar</arg>
+					      <arg>/maven/microservice-0.0.1.war</arg>
+					    </exec>
+					</entryPoint>
+  
+                    <command>java -Djava.security.egd=file:/dev/./urandom -jar /maven/microservice-0.0.1.war</command>
+                   
+                    <tags>
+						<tag>latest</tag>
+						<tag>${project.version}</tag>
+					</tags>
+					
+					<ports>
+						<port>8080</port>
+					</ports>
+         
+                   <assembly>
+                      <mode>dir</mode>
+   					  <descriptor>assembly.xml</descriptor>
+                    </assembly>  
+                  </build>
+                 
+             	</image>
+             	</images> 
+             	
+             	<authConfig>
+         			<username>dheepak20782</username>
+         			<password>Schemozzle@9</password>
+   			   </authConfig> 
+   			   
+   			   <!--  <authConfig>
+         			<username>root</username>
+         			<password>verizon1</password>
+   			   </authConfig>  -->
+   			  <!--  <registry>136.151.193.184:5000</registry> -->
+             	<!--  <imageName>dheepak20782:microservice-0.0.1.war</imageName>
+		        <baseImage>java:7</baseImage>
+		        <entryPoint>["java", "-jar", "/${project.build.finalName}.war"]</entryPoint>
+		        copy the service's jar file from target into the root directory of the image 
+		        <resources>
+		           <resource>
+		             <directory>${project.build.directory}</directory>
+		             <include>${project.build.finalName}.war</include>
+		           </resource> 
+        </resources>-->
+
+          <!--       <dockerDirectory>src/main/docker</dockerDirectory>
+                <resources>
+                    <resource>
+                        <directory>${project.build.directory}</directory>
+                        <include>${project.build.finalName}.war</include>
+                    </resource>
+                </resources> -->
+                <!-- <registryUrl>https://index.docker.io/</registryUrl>  -->
+                
+            </configuration>
+        </plugin>
+        
+        <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.2.3.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        
         </plugins>
         
         </pluginManagement>
@@ -169,4 +255,7 @@
   </repository>
 </repositories>
   
+  <properties>
+  	<docker.image.prefix>springbootwin</docker.image.prefix>
+  </properties>
 </project>
