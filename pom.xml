@@ -193,6 +193,29 @@
    					  <descriptor>assembly.xml</descriptor>
                     </assembly>  
                   </build>
+                  <run>
+                  <ports>
+                  <port>8098:8088</port>
+                  </ports>
+                  <links>
+                  <link>casdb:db</link>
+                  </links>
+                  <wait>
+                  <url>http://136.151.193.184:8098</url> 
+                  </wait>
+                  <nameStrategy>
+                  <alias>web</alias>
+                  </nameStrategy>
+                  <log>
+                  <prefix>DEMO</prefix>
+                  <date>ISO8601</date>
+                  <color>blue</color>
+                  </log>
+                  
+                   <command>java -Djava.security.egd=file:/dev/./urandom -jar /maven/microservice-0.0.1.war</command>
+                   
+                  
+                  </run>
                  
              	</image>
              	</images> 
@@ -246,7 +269,9 @@
         </plugins>
         
         </pluginManagement>
+        
     </build>
+    
     
   <repositories>
   <repository>
