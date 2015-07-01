@@ -164,6 +164,7 @@
               	<images>
              	<image>
              	<name>dheepak20782/${project.artifactId}</name>
+             	<alias>orchestrationService</alias>
              	<registry>136.151.193.13:5000</registry>
              	 <build>
 				    <from>java:7</from>
@@ -204,9 +205,7 @@
                   <wait>
                   <url>http://136.151.193.184:8098</url> 
                   </wait>
-                  <namingStrategy>
-                  <alias>web</alias>
-                  </namingStrategy>
+                  <namingStrategy>alias</namingStrategy>
                   <log>
                   <prefix>DEMO</prefix>
                   <date>ISO8601</date>
