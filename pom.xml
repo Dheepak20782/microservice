@@ -193,6 +193,7 @@
    					  <descriptor>assembly.xml</descriptor>
                     </assembly>  
                   </build>
+                  
                   <run>
                   <ports>
                   <port>8098:8088</port>
@@ -203,9 +204,9 @@
                   <wait>
                   <url>http://136.151.193.184:8098</url> 
                   </wait>
-                  <nameStrategy>
+                  <namingStrategy>
                   <alias>web</alias>
-                  </nameStrategy>
+                  </namingStrategy>
                   <log>
                   <prefix>DEMO</prefix>
                   <date>ISO8601</date>
