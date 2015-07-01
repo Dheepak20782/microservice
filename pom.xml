@@ -195,7 +195,7 @@
                     </assembly>  
                   </build>
                   
-                  <run>
+            <!--       <run>
                   <ports>
                   <port>8098:8088</port>
                   </ports>
@@ -215,7 +215,7 @@
                   
                    
                   
-                  </run>
+                  </run> -->
                  
              	</image>
              	</images> 
